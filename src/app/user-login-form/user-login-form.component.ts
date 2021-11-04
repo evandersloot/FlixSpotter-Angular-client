@@ -12,7 +12,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class UserLoginFormComponent implements OnInit {
 
-  @Input() userData = { username: '', password: '' };
+  @Input() userData = { Username: '', Password: '' };
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -25,11 +25,11 @@ export class UserLoginFormComponent implements OnInit {
   // send form inputs to the backend and returns success or error
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {
-      localStorage.setItem('username', result.user.username);
+      localStorage.setItem('username', result.user.Username);
       localStorage.setItem('token', result.token);
       this.dialogRef.close(); //closes modal
       console.log(result)
-      this.snackBar.open(`Welcome back '${result.username}'`, 'OK', {
+      this.snackBar.open('Wecome back', this.userData.Username!, {
         duration: 2000
       });
     }, (result) => {
