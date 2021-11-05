@@ -59,7 +59,7 @@ export class FetchApiDataService {
   }
 
   // api call to get director
-  getDirectors(name: any): Observable<any> {
+  getDirectors(director: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + `directors/:name`,  {
       headers: new HttpHeaders(
@@ -73,7 +73,7 @@ export class FetchApiDataService {
   }
 
   // api call to get genre
-  getGenres(name: any): Observable<any> {
+  getGenres(genre: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + `genres/:name`, {
       headers: new HttpHeaders(

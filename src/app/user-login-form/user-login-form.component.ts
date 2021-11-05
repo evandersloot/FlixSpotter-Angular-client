@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 // brings in api calls
 import { FetchApiDataService } from '../fetch-api-data.service';
 //display notifications to user
@@ -17,7 +18,9 @@ export class UserLoginFormComponent implements OnInit {
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar,
+    public router: Router,
+    ) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +35,7 @@ export class UserLoginFormComponent implements OnInit {
       this.snackBar.open('Wecome back', this.userData.Username!, {
         duration: 2000
       });
+      this.router.navigate(['movies']);
     }, (result) => {
       this.snackBar.open(result, 'OK', {
         duration: 2000
