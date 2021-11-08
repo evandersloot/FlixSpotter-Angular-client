@@ -1,0 +1,36 @@
+<mat-toolbar>
+    <span>Welcome {{ userDetails }} </span>
+    <span class="top-nav"></span>
+    <button
+      class="nav-button"
+      mat-button
+      routerLink="/movies"
+      color="primary"
+      >
+        Movies
+      </button>
+      <button
+        class="nav-button"
+        mat-button
+        routerLink="/favorites"
+        color="primary"
+      >
+        Favorites
+      </button>
+      <button 
+        class="nav-button"
+        mat-button 
+        routerLink="/profile"
+        color='primary'
+      >
+          Profile
+      </button>
+      <button 
+        class="nav-button"
+        mat-button
+        (click)="signOut()"
+        color="primary"
+      >
+          Log out
+        </button>
+  </mat-toolbar>
