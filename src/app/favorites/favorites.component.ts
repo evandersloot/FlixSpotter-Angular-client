@@ -50,7 +50,7 @@ export class FavoritesComponent implements OnInit {
   getFavoriteMovies(): void {
     const user = localStorage.getItem('username')
     this.fetchApiData.getUser(user).subscribe((resp: any) => {
-      this.favorites = resp.FavoriteMovies;
+      this.favorites = resp.Favorites;
       console.log(this.favorites);
       return this.favorites
     })
@@ -86,8 +86,8 @@ export class FavoritesComponent implements OnInit {
     })
   }
 
-  addFavoriteMovie(id: string, Title: string): void {
-    this.fetchApiData.addMovie(id).subscribe((res: any) => {
+  addFavoriteMovie(movieId: string, Title: string): void {
+    this.fetchApiData.addMovie(movieId).subscribe((res: any) => {
       this.snackBar.open(`${Title} has been added to your favorites`, 'OK', {
         duration: 3000,
       })
@@ -97,8 +97,8 @@ export class FavoritesComponent implements OnInit {
     return this.getFavoriteMovies();
   }
 
-  deleteFavoriteMovie(id: string, Title: string): void {
-    this.fetchApiData.deleteMovie(id).subscribe((res: any) => {
+  deleteFavoriteMovie(movieId: string, Title: string): void {
+    this.fetchApiData.deleteMovie(movieId).subscribe((res: any) => {
       this.snackBar.open(`${Title} has been removed`, 'OK', {
         duration: 3000,
       })
@@ -108,8 +108,8 @@ export class FavoritesComponent implements OnInit {
     return this.getFavoriteMovies();
   }
 
-  setFavoriteStatus(id: any): any {
-    if (this.favorites.includes(id)) {
+  setFavoriteStatus(movieId: any): any {
+    if (this.favorites.includes(movieId)) {
       return true;
     } else {
       return false;
