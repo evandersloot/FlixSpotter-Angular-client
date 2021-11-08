@@ -3,15 +3,20 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
-//Components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+//Components
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MovieGenreComponent } from './movie-genre/movie-genre.component';
 import { MovieDirectorComponent } from './movie-director/movie-director.component';
 import { MovieViewComponent } from './movie-view/movie-view.component';
+import { EditUserProfileComponent } from './edit-user-profile/edit-user-profile.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
 // visual mods
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -22,16 +27,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MovieCardComponent } from './movie-card/movie-card.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
+  { path: 'profile', component: UserProfileComponent},
   { path: 'movies', component: MovieCardComponent },
-  { path: 'genres', component: MovieGenreComponent},
-  { path: 'directors', component: MovieDirectorComponent},
   { path: 'movie', component: MovieViewComponent},
+  { path: 'favorites', component: FavoritesComponent},
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -44,7 +48,11 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     MovieGenreComponent,
     MovieDirectorComponent,
-    MovieViewComponent
+    MovieViewComponent,
+    UserProfileComponent,
+    FavoritesComponent,
+    EditUserProfileComponent,
+    NavigationBarComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -59,6 +67,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatFormFieldModule,
     MatSnackBarModule,
+    MatToolbarModule,
     MatIconModule,
   ],
   providers: [],

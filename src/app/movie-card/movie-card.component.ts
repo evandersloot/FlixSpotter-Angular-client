@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MovieDirectorComponent } from '../movie-director/movie-director.component';
@@ -16,16 +16,17 @@ import { MovieViewComponent } from '../movie-view/movie-view.component';
 export class MovieCardComponent implements OnInit {
 
   movies: any[] = [];
+  favorites: any[] = [];
 
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
-    public router: Router,
-    public snackbar: MatSnackBar,
+    public snackBar: MatSnackBar,
     ) { }
 
   ngOnInit(): void {
     this.getMovies();
+    this.getFavoriteMovies();
   }
 
   getMovies(): void {
@@ -43,7 +44,7 @@ export class MovieCardComponent implements OnInit {
     })
   }
 
-  openDirector(name: string, bio: string, birth: Date, death: Date): void {
+  openDirector(name: string, bio: string, birth: number, death: number): void {
     this.dialog.open(MovieDirectorComponent, {
       data: {name, bio, birth, death},
       width: '750px'
@@ -55,6 +56,45 @@ export class MovieCardComponent implements OnInit {
       data: {title, description},
       width: '750px'
     })
+  }
+
+  getFavoriteMovies(): void {
+    const user = localStorage.getItem('username')
+    this.fetchApiData.getUser(user).subscribe((resp: any) => {
+      this.favorites = resp.FavoriteMovies;
+      console.log(this.favorites);
+      return this.favorites
+    })
+  }
+
+  addFavoriteMovie(id: string, Title: string): void {
+    this.fetchApiData.addMovie(id).subscribe((res: any) => {
+      this.snackBar.open(`${Title} has been added to your favorites`, 'OK', {
+        duration: 3000,
+      })
+      setTimeout(function() {
+        window.location.reload()}, 3000);
+    });
+    return this.getFavoriteMovies();
+  }
+
+  deleteFavoriteMovie(id: string, Title: string): void {
+    this.fetchApiData.deleteMovie(id).subscribe((res: any) => {
+      this.snackBar.open(`${Title} has been removed`, 'OK', {
+        duration: 3000,
+      })
+      setTimeout(function() {
+        window.location.reload()}, 3000);
+    });
+    return this.getFavoriteMovies();
+  }
+ 
+  setFavoriteStatus(id: any): any {
+    if (this.favorites.includes(id)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

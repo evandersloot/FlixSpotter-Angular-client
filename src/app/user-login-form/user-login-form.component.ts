@@ -13,7 +13,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class UserLoginFormComponent implements OnInit {
 
-  @Input() userData = { Username: '', Password: '' };
+  @Input() userData = { 
+    Username: '', 
+    Password: '' };
 
   constructor(
     public fetchApiData: FetchApiDataService,

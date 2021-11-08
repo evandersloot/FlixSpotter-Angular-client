@@ -1,3 +1,5 @@
+<app-navigation-bar></app-navigation-bar>
+
 <div style="display: flex;">
     <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
         <mat-card-header>
@@ -27,7 +29,10 @@
             >
                 Story
             </button>
-            <mat-icon>favorite_border</mat-icon>
+            <div>
+                <mat-icon *ngIf="!setFavoriteStatus(movie._id)" (click)="addFavoriteMovie(movie._id, movie.Title)" class="fav-button">favorite_border</mat-icon>
+                <mat-icon *ngIf="setFavoriteStatus(movie._id)" (click)="deleteFavoriteMovie(movie._id, movie.Title)" class="fav-active">favorite</mat-icon>
+            </div>
         </mat-card-actions>
     </mat-card>
 </div>
