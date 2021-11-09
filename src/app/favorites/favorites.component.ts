@@ -41,8 +41,8 @@ export class FavoritesComponent implements OnInit {
 
   getUser(): void {
     let user = localStorage.getItem('username');
-    this.fetchApiData.getUser(user).subscribe((result: any) => {
-      this.user = result;
+    this.fetchApiData.getUser(user).subscribe((res: any) => {
+      this.user = res;
       this.getMovies();
     });
   }
@@ -50,7 +50,7 @@ export class FavoritesComponent implements OnInit {
   getFavoriteMovies(): void {
     const user = localStorage.getItem('username')
     this.fetchApiData.getUser(user).subscribe((resp: any) => {
-      this.favorites = resp.Favorites;
+      this.favorites = resp.favoriteMovies;
       console.log(this.favorites);
       return this.favorites
     })
