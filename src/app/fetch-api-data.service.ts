@@ -47,7 +47,7 @@ export class FetchApiDataService {
   // api call to get a single movie
   getMovie(title: any): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl +  `movies/:title`, {
+    return this.http.get(apiUrl + 'movies/:Title', {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -59,9 +59,9 @@ export class FetchApiDataService {
   }
 
   // api call to get director
-  getDirectors(director: any): Observable<any> {
+  getDirectors(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + `directors/:name`,  {
+    return this.http.get(apiUrl + 'directors/:name',  {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -73,9 +73,9 @@ export class FetchApiDataService {
   }
 
   // api call to get genre
-  getGenres(genre: any): Observable<any> {
+  getGenres(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + `genres/:name`, {
+    return this.http.get(apiUrl + 'genres/:name', {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -89,7 +89,7 @@ export class FetchApiDataService {
   //api call to get user by username
   getUser(username: any): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + `users/${username}`, {
+    return this.http.get(apiUrl + 'users/' + username, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -103,7 +103,7 @@ export class FetchApiDataService {
   // api call to get list of favorites
   getFavoriteMovies(username: any): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + `users/${username}/movies`, {
+    return this.http.get(apiUrl + 'users/' + username + '/movies', {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -117,8 +117,8 @@ export class FetchApiDataService {
   // api call to add movie to favorites
   addMovie(movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('users/:username/movies/:movieId');
-    return this.http.post(apiUrl + `users/${username}/movies/${movieId}`, {}, {
+    const username = localStorage.getItem('username');
+    return this.http.post(apiUrl + 'users/' + username + 'movies' + movieId, {}, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -133,7 +133,7 @@ export class FetchApiDataService {
   editUser(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('users/:username')
-    return this.http.put(apiUrl + `users/${username}`, userDetails, {
+    return this.http.put(apiUrl + 'users/' + username, userDetails, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -148,7 +148,7 @@ export class FetchApiDataService {
   deleteUser(): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('users/:username');
-    return this.http.delete(apiUrl + `users/${username}`, {
+    return this.http.delete(apiUrl + 'users/' + username, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -162,8 +162,8 @@ export class FetchApiDataService {
   // api call to delete movie from favorites
   deleteMovie(movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('users/:username/movies/remove/:movie');
-    return this.http.delete(apiUrl + `users/${username}/movies/remove/${movieId}`, {
+    const username = localStorage.getItem('username');
+    return this.http.delete(apiUrl + 'users/' + username + '/' + 'movies/' + 'remove/' + movieId, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,

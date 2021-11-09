@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <mat-card>
   <mat-card-header>
     <mat-card-title>Update Account Details</mat-card-title>
@@ -10,7 +8,17 @@
       <mat-form-field>
         <input
           matInput
-          [(ngModel)]="userDetails.Password"
+          [(ngModel)]="userDetails.username"
+          type = "username"
+          placeholder="Username"
+          name="username"
+          required
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="userDetails.password"
           type = "password"
           placeholder="Password"
           name="Password"
@@ -20,20 +28,11 @@
       <mat-form-field>
         <input
           matInput
-          [(ngModel)]="userDetails.Email"
+          [(ngModel)]="userDetails.email"
           type = "email"
           placeholder="Email"
           name="Email"
           required
-        >
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          matInput
-          [(ngModel)]="userDetails.Birthday"
-          type = "date"
-          placeholder="Birthday"  
-          name="Birthday"
         >
       </mat-form-field>
     </form>
@@ -48,8 +47,8 @@
     </button>
     <button
       mat-raised-button
-      color="warning"
-      (click)="deleteUser"
+      color="warn"
+      (click)="deleteUser()"
     >
     Delete Account
     </button>

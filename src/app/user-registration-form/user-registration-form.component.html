@@ -1,4 +1,4 @@
-<p>user-registration-form works!</p>
+
 <mat-card>
     <mat-card-header>
         <mat-card-title>Sign up here!</mat-card-title>
@@ -8,7 +8,7 @@
             <mat-form-field>
                 <input
                     matInput
-                    [(ngModel)]="userData.Name"
+                    [(ngModel)]="userDetails.name"
                     placeholder="Name"
                     type="text"
                     name="name"
@@ -18,7 +18,7 @@
             <mat-form-field>
                 <input
                     matInput
-                    [(ngModel)]="userData.Username"
+                    [(ngModel)]="userDetails.username"
                     placeholder="Username"
                     type="text"
                     name="username"
@@ -28,7 +28,7 @@
             <mat-form-field>
                 <input
                     matInput
-                    [(ngModel)]="userData.Password"
+                    [(ngModel)]="userDetails.password"
                     placeholder="Password"
                     type="password"
                     name="password"
@@ -38,7 +38,7 @@
             <mat-form-field>
                 <input
                     matInput
-                    [(ngModel)]="userData.Email"
+                    [(ngModel)]="userDetails.email"
                     placeholder="Email"
                     type="email"
                     name="email"
@@ -48,7 +48,7 @@
             <mat-form-field>
                 <input
                     matInput
-                    [(ngModel)]="userData.Birthday"
+                    [(ngModel)]="userDetails.birthday"
                     placeholder="Date of Birth dd/mm/yyyy"
                     type="date"
                     name="birthday"

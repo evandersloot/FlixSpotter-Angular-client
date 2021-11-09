@@ -13,11 +13,13 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 })
 export class EditUserProfileComponent implements OnInit {
 
+username: any = {}
+
 @Input() userDetails = {
-  Username: '',
-  Password: '',
-  Email: '',
-  Birthday: '',
+  username: '',
+  password: '',
+  email: '',
+  birthday: '',
 };
 
   constructor(
@@ -28,14 +30,22 @@ export class EditUserProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getUser()
+  }
+
+  getUser(): void {
+    let user = localStorage.getItem('username');
+    this.fetchApiData.getUser(user).subscribe((res: any) => {
+      this.username = res;
+    });
   }
 
   updateUser(): void {
     this.fetchApiData.editUser(this.userDetails).subscribe((res) => {
       this.dialogRef.close();
-      localStorage.setItem('username', res.Username)
+      localStorage.setItem('username', res.username)
       console.log(res)
-      this.snackBar.open(this.userDetails.Username, 'Updated');
+      this.snackBar.open(this.userDetails.username, 'Updated');
       }, (res) => {
         this.snackBar.open(res, 'OK', {
           duration: 3000});
@@ -58,7 +68,7 @@ export class EditUserProfileComponent implements OnInit {
   }
 
   cancel(): void {
-    this.router.navigate(['/profile']).then(() => {
+    this.router.navigate(['profile']).then(() => {
       window.location.reload();
     });
   }

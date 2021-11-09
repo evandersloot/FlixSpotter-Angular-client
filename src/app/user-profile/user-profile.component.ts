@@ -30,8 +30,8 @@ export class UserProfileComponent implements OnInit {
 
   getUser(): void {
     let user = localStorage.getItem('username');
-    this.fetchApiData.getUser(user).subscribe((result: any) => {
-      this.user = result;
+    this.fetchApiData.getUser(user).subscribe((res: any) => {
+      this.user = res;
     });
   }
 
