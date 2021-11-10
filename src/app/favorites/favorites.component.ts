@@ -19,6 +19,7 @@ export class FavoritesComponent implements OnInit {
   favoriteMovies: any = [];
   movies: any[] = [];
   favorites: any[] = [];
+  userDetails: any = {};
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -29,6 +30,11 @@ export class FavoritesComponent implements OnInit {
   ngOnInit(): void {
     this.getMovies();
     this.getFavoriteMovies();
+    this.getUserDetails();
+  }
+
+  public getUserDetails(): void {
+    this.userDetails = localStorage.getItem('username');
   }
 
   getMovies(): void {
@@ -50,7 +56,7 @@ export class FavoritesComponent implements OnInit {
   getFavoriteMovies(): void {
     const user = localStorage.getItem('username')
     this.fetchApiData.getUser(user).subscribe((resp: any) => {
-      this.favorites = resp.favoriteMovies;
+      this.favorites = resp.FavoriteMovies;
       console.log(this.favorites);
       return this.favorites
     })

@@ -1,10 +1,10 @@
 <app-navigation-bar></app-navigation-bar>
 
 <div class="favorites-container">
-    <h1>{{user}}'s Favorites</h1>
+    <h1>{{ userDetails }}'s Favorite Movies</h1>
   </div>
   <div class="movie-container">
-    <mat-card *ngFor="let movie of favorites;" style="flex: 1 1 auto;">
+    <mat-card *ngFor="let movie of favoriteMovies;" style="flex: 1 1 auto;">
         <mat-card-header>
         <mat-card-title>{{ movie.Title }}</mat-card-title>
             <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
