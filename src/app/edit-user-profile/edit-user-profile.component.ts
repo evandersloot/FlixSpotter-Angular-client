@@ -16,10 +16,11 @@ export class EditUserProfileComponent implements OnInit {
 username: any = {}
 
 @Input() userDetails = {
+  name: '',
   username: '',
   password: '',
   email: '',
-  birthday: '',
+  birthday: ''
 };
 
   constructor(
@@ -30,28 +31,31 @@ username: any = {}
   ) { }
 
   ngOnInit(): void {
-    this.getUser()
+    this.getUser();
   }
 
   getUser(): void {
-    let user = localStorage.getItem('username');
-    this.fetchApiData.getUser(user).subscribe((res: any) => {
+    let username = localStorage.getItem('username');
+    this.fetchApiData.getUser(username).subscribe((res: any) => {
       this.username = res;
     });
   }
 
   updateUser(): void {
-    this.fetchApiData.editUser(this.userDetails).subscribe((res) => {
+    this.fetchApiData.updateUser(this.userDetails).subscribe((res) => {
       this.dialogRef.close();
       localStorage.setItem('username', res.username)
       console.log(res)
-      this.snackBar.open(this.userDetails.username, 'Updated');
+      this.snackBar.open(this.userDetails.username, 'Updated', {
+        duration: 3000
+      });
       }, (res) => {
         this.snackBar.open(res, 'OK', {
-          duration: 3000});
+          duration: 3000
+        });
         setTimeout(function () {
           window.location.reload();
-        }, 3000);
+        }, 3000); 
     });
   }
 
@@ -59,10 +63,14 @@ username: any = {}
     if(confirm('Deleting your profile cannot be undone')) {
       this.fetchApiData.deleteUser().subscribe(() => {
         localStorage.clear();
-        this.router.navigate(['welcome']);
-        this.snackBar.open('Your account has been deleted', 'OK', {
-          duration: 3000
-        });
+      },
+      (res) => {
+      this.snackBar.open(res, 'Your account has been deleted', {
+        duration: 3000
+      });
+      this.router.navigate(['welcome']).then(() => {
+        window.location.reload()
+      }); 
       });
     }
   }

@@ -131,7 +131,7 @@ export class FetchApiDataService {
   }
 
   // api call to edit user
-  editUser(userDetails: any): Observable<any> {
+  updateUser(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('username')
     return this.http.put(apiUrl + 'users/' + username, userDetails, {
@@ -177,7 +177,7 @@ export class FetchApiDataService {
 
   // extract response, return body of response
   private extractResponseData(res: Response | Object): any {
-    let body = res;
+    const body = res;
     return body || {};
   }
   private userError(error: HttpErrorResponse): any {
