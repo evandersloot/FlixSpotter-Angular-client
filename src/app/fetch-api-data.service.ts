@@ -27,7 +27,7 @@ export class FetchApiDataService {
   public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http.post(apiUrl + 'login', userDetails).pipe(
-    catchError(this.handleError)
+    catchError(this.userError)
     );
   }
 
@@ -101,8 +101,9 @@ export class FetchApiDataService {
   }
 
   // api call to get list of favorites
-  getFavoriteMovies(username: any): Observable<any> {
+  getFavoriteMovies(): Observable<any> {
     const token = localStorage.getItem('token');
+    const username = localStorage.getItem('username');
     return this.http.get(apiUrl + 'users/' + username + '/movies', {
       headers: new HttpHeaders(
         {
@@ -118,7 +119,7 @@ export class FetchApiDataService {
   addMovie(movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('username');
-    return this.http.post(apiUrl + 'users/' + username + 'movies' + movieId, {}, {
+    return this.http.post(apiUrl + 'users/' + username + '/movies/' + movieId, {}, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -132,7 +133,7 @@ export class FetchApiDataService {
   // api call to edit user
   editUser(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('users/:username')
+    const username = localStorage.getItem('username')
     return this.http.put(apiUrl + 'users/' + username, userDetails, {
       headers: new HttpHeaders(
         {
@@ -147,7 +148,7 @@ export class FetchApiDataService {
   // api call to delete user
   deleteUser(): Observable<any> {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('users/:username');
+    const username = localStorage.getItem('username');
     return this.http.delete(apiUrl + 'users/' + username, {
       headers: new HttpHeaders(
         {
@@ -163,7 +164,7 @@ export class FetchApiDataService {
   deleteMovie(movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('username');
-    return this.http.delete(apiUrl + 'users/' + username + '/' + 'movies/' + 'remove/' + movieId, {
+    return this.http.delete(apiUrl + 'users/' + username + '/movies/remove/' + movieId, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -178,6 +179,18 @@ export class FetchApiDataService {
   private extractResponseData(res: Response | Object): any {
     let body = res;
     return body || {};
+  }
+  private userError(error: HttpErrorResponse): any {
+    if (error.error instanceof ErrorEvent) {
+      console.error('Are you registered?', error.error.message);
+    } else {
+    console.error(
+      `Error Status code ${error.status}, ` +
+      `Error body is: ${error.error}`);
+    }
+    return throwError(
+    'You are not a registered user. Please sign up.'
+    );
   }
 
   private handleError(error: HttpErrorResponse): any {

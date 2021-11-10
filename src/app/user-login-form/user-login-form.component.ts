@@ -15,7 +15,8 @@ export class UserLoginFormComponent implements OnInit {
 
   @Input() userDetails = { 
     Username: '', 
-    Password: '' };
+    Password: '', 
+  };
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -30,7 +31,7 @@ export class UserLoginFormComponent implements OnInit {
   // send form inputs to the backend and returns success or error
   loginUser(): void {
     this.fetchApiData.userLogin(this.userDetails).subscribe((result) => {
-      localStorage.setItem('username', result.user.Username);
+      localStorage.setItem('username', result.user.username);
       localStorage.setItem('token', result.token);
       this.dialogRef.close(); //closes modal
       console.log(result)
