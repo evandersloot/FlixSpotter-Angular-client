@@ -1,0 +1,39 @@
+.nav-bar {
+    position: relative;
+    display: flex;
+    margin-bottom: 10px;
+    background-image: linear-gradient(
+        to right,
+        rgba(00,0,0,1) 0%,
+        rgb(8, 20, 92) 50%
+    )
+}
+
+.top-nav {
+    flex: 1 1 auto;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.logo {
+    margin-bottom: -16px;
+}
+
+.nav-button {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+    text-align: right;
+}
+
+.nav-bar, span {
+    font-size: 24px;
+    font-weight: 300;
+    color: lightgray;
+    
+}
+
+.nav-button-logout {
+    margin-right: 50px;
+    font-size: 20px;
+}

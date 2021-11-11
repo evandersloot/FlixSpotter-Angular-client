@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FetchApiDataService } from '../fetch-api-data.service';
 
 @Component({
   selector: 'app-movie-director',
@@ -8,7 +7,6 @@ import { FetchApiDataService } from '../fetch-api-data.service';
   styleUrls: ['./movie-director.component.scss']
 })
 export class MovieDirectorComponent implements OnInit {
-  isLoading = false;
   directors: any[] = [];
   constructor(
 

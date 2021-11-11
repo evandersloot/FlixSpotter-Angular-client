@@ -1,21 +1,30 @@
-<div class="main-page">
-  <h1>
-    Welcome to FlixSpotter!
-  </h1>
-  <button
-    mat-raised-button
-    (click)="openUserRegistrationDialog()"
-    style="margin-right: 10px;"
-    color="primary"
-  >
-    Signup
-  </button>
-  <button
-    mat-raised-button
-    (click)="openUserLoginDialog()"
-    style="margin-right: 10px;"
-    color="primary"
-  >
-    Login
-  </button>
-</div>
+<!DOCTYPE html>
+<body class="background" style="background-image: url('./assets/background1.webp');">
+  <div class="welcome-page" >
+    <img class="logo" src="./assets/logo.png">
+    <h1>
+      Welcome to FlixSpotter!
+    </h1>
+    <h3>
+      A World of Movies!
+    </h3>
+    <div class="welcome-button">
+      <button
+        mat-raised-button
+        (click)="openUserRegistrationDialog()"
+        color="primary"
+        style="align-items: center; margin-left: 45px;"
+      >
+        Signup
+      </button>
+      <button
+        mat-raised-button
+        (click)="openUserLoginDialog()"
+        color="primary"
+        style="align-items: center; margin-left: 20px;"
+      >
+        Login
+      </button>
+    </div>
+  </div>
+</body>

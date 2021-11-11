@@ -2,22 +2,19 @@
 
 <div class="profile-container">
   <h1>Hello!  {{ user.username }}</h1>
+  <h2>Your profile information:</h2>
+  <p class="name">Name: {{user.name}}</p>
   <p class="born">Birthday: {{ user.birthday }}</p>
   <h3>{{ user.email }}</h3>
   <div>
-  <button 
-    class='edit-account' 
-    mat-raised-button
-    (click)="openEditUserProfile()"
-  >
-    Edit Account
-  </button>
-  <button 
-    class='open-favorites' 
-    mat-raised-button color="primary"
-    (click)="openFavorites()"
-  >
-    Favorites 
-  </button></div>
+    <button 
+      class='edit-account' 
+      mat-raised-button
+      (click)="openEditUserProfile()"
+      color="primary"
+    >
+      Edit Account Details
+    </button>
+  </div>
 
 </div>

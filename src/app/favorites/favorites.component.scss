@@ -1,0 +1,64 @@
+.mat-card {
+    background-image: linear-gradient(
+        to right,
+        rgba(00,0,0,1) 0%,
+        rgb(8, 20, 92) 50%
+    )
+}
+
+h1 {
+    color: lightgray;
+    text-align: center;
+}
+
+.mat-card {
+    width: 300px;
+    height: 550px;
+    margin: 15px;
+    float: left;
+}
+
+.mat-card-actions {
+    text-align: center;
+}
+
+.mat-button {
+    color: lightblue;
+    font-size: 18px;
+}
+
+.favorite-button {
+    color: lightblue;
+}
+
+.favorite-active {
+    color: red;
+}
+
+.mat-card-header {
+    display: flex;
+    height: 75px;
+    flex-direction: row;
+    text-align: center;
+    margin-top: 5px;
+    color: lightgray
+}
+
+.mat-card-subtitle {
+    color: lightgray;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+}
+
+.movie-poster, img.movie-poster {
+    width: 265px;
+    height: 390px;
+    margin-left: 17.5px;
+    margin-bottom: 25px;
+}

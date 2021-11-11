@@ -1,5 +1,5 @@
-<mat-toolbar>
-    <span>Welcome {{ userDetails }} </span>
+<mat-toolbar class="nav-bar">
+    <span>Welcome to <img class="logo" src="./assets/logo.png"> {{ userDetails }} </span>
     <span class="top-nav"></span>
     <button
       class="nav-button"
@@ -25,11 +25,11 @@
       >
           Profile
       </button>
+      
       <button 
-        class="nav-button"
-        mat-button
+        class="nav-button-logout"
+        mat-icon-button
         (click)="signOut()"
-        color="primary"
       >
           Log out
         </button>

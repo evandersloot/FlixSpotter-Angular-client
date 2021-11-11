@@ -1,0 +1,41 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: lightgray;
+    align-items: center;
+    margin-top: 50px;
+    margin-left: 500px;
+    width: 800px;
+}
+
+.profile-container {
+  background-image: linear-gradient(
+    to right,
+    rgba(00,0,0,1) 0%,
+    rgb(8, 20, 92) 50%
+    )
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 900;
+    text-decoration: underline;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.name, .born, h3 {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.edit-account {
+    margin: 25px;
+}
+
