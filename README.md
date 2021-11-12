@@ -8,19 +8,19 @@ Using Angular, build the client-side for an application called myFlix based on i
 * As a user, I want to be able to receive information on movies, directors, and genres so that I can learn more about movies I’ve watched or am interested in.
 * As a user, I want to be able to create a profile so I can save data about my favorite movies.
 # Dependencies
-"@angular/animations": "~12.2.0",
-"@angular/cdk": "^12.2.6",
-"@angular/common": "~12.2.0",
-"@angular/compiler": "~12.2.0",
-"@angular/core": "~12.2.0",
-"@angular/flex-layout": "^12.0.0-beta.35",
-"@angular/forms": "~12.2.0",
-"@angular/material": "^12.2.6",
-"@angular/platform-browser": "~12.2.0",
-"@angular/platform-browser-dynamic": "~12.2.0",
-"@angular/router": "~12.2.0",
-"angular-animations": "^0.11.0",
-"rxjs": "~6.6.0",
+* "@angular/animations": "~12.2.0",
+* "@angular/cdk": "^12.2.6",
+* "@angular/common": "~12.2.0",
+* "@angular/compiler": "~12.2.0",
+* "@angular/core": "~12.2.0",
+* "@angular/flex-layout": "^12.0.0-beta.35",
+* "@angular/forms": "~12.2.0",
+* "@angular/material": "^12.2.6",
+* "@angular/platform-browser": "~12.2.0",
+* "@angular/platform-browser-dynamic": "~12.2.0",
+* "@angular/router": "~12.2.0",
+* "angular-animations": "^0.11.0",
+* "rxjs": "~6.6.0",
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.12.
 
