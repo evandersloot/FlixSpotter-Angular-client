@@ -32,11 +32,12 @@ import { MatIconModule } from '@angular/material/icon';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
-  { path: 'profile', component: UserProfileComponent},
   { path: 'movies', component: MovieCardComponent },
+  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+  { path: 'profile', component: UserProfileComponent},
   { path: 'movie', component: MovieViewComponent},
   { path: 'favorites', component: FavoritesComponent},
-  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+  
 ];
 
 @NgModule({
