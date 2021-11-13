@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserLoginFormComponent } from '../user-login-form/user-login-form.component';
 import { UserRegistrationFormComponent } from '../user-registration-form/user-registration-form.component';
-import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -28,12 +27,6 @@ export class WelcomePageComponent implements OnInit {
     this.dialog.open(UserLoginFormComponent, {
       width: '480px'
     })
-  }
-  // opens up movies view
-  openMoviesDialog(): void {
-    this.dialog.open(MovieCardComponent, {
-      width: '1500px'
-    });
   }
 
 }
