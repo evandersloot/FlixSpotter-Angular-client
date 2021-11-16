@@ -30,10 +30,16 @@ username: any = {}
     public router: Router,
   ) { }
 
+  /**
+   * Gets the user info on initialization
+   */
   ngOnInit(): void {
     this.getUser();
   }
 
+  /**
+   * Gets user information
+   */
   getUser(): void {
     let username = localStorage.getItem('username');
     this.fetchApiData.getUser(username).subscribe((res: any) => {
@@ -41,6 +47,9 @@ username: any = {}
     });
   }
 
+  /**
+   * Method will send 'PUT' data to the database to update the user's account info'
+   */
   updateUser(): void {
     this.fetchApiData.updateUser(this.userDetails).subscribe((res) => {
       this.dialogRef.close();
@@ -59,6 +68,13 @@ username: any = {}
     });
   }
 
+  /**
+   * Method will delete the user's account
+   * Includes a warning prior to deletion
+   * Clears local storage 
+   * Informs user their account was deleted
+   * Routes user to the welcome page
+   */
   deleteUser(): void { 
     if(confirm('Deleting your profile cannot be undone')) {
       this.fetchApiData.deleteUser().subscribe(() => {
@@ -75,6 +91,9 @@ username: any = {}
     }
   }
 
+  /**
+   * Allows the user to cancel their choice of updating or deleting their account
+   */
   cancel(): void {
     this.router.navigate(['profile']).then(() => {
       window.location.reload();

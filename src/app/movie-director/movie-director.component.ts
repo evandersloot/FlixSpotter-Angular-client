@@ -10,6 +10,9 @@ export class MovieDirectorComponent implements OnInit {
   directors: any[] = [];
   constructor(
 
+    /**
+     * Inject to retrieve movie details of director from movie object
+     */
     @Inject(MAT_DIALOG_DATA)
     public data: {
       name: string,

@@ -24,10 +24,17 @@ export class UserProfileComponent implements OnInit {
     public snackBar: MatSnackBar,
   ) { }
 
+  /**
+   * Gets user information upon initialization
+   * @ returns user object
+   */
   ngOnInit(): void {
     this.getUser();
   }
 
+  /**
+   * Gets user information
+   */
   getUser(): void {
     let user = localStorage.getItem('username');
     this.fetchApiData.getUser(user).subscribe((res: any) => {
@@ -35,18 +42,18 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Open modal for user to edit their account information
+   */
   openEditUserProfile(): void {
     this.dialog.open(EditUserProfileComponent, {
       width: '500px'
     });
   }
 
-  openFavorites(): void {
-    this.dialog.open(FavoritesComponent, {
-      width: '750px'
-    });
-  }
-
+  /**
+   * Allows the user to cancel their choice to edit account information
+   */
   cancel(): void {
     this.router.navigate(['/user-profile']).then(() => {
       window.location.reload();

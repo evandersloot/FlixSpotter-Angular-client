@@ -10,6 +10,9 @@ export class MovieGenreComponent implements OnInit {
 
   constructor(
 
+    /**
+     * Inject to retrieve movie details of genre from movie object
+     */
     @Inject(MAT_DIALOG_DATA)
     public data: {
       name: string,

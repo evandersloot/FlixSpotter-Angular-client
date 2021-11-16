@@ -13,6 +13,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class UserLoginFormComponent implements OnInit {
 
+  /**
+   * Details required for a user to log in
+   */
   @Input() userDetails = { 
     Username: '', 
     Password: '', 
@@ -28,7 +31,12 @@ export class UserLoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // send form inputs to the backend and returns success or error
+  /**
+   * Sends a login request to the database
+   * - saves username to local storage
+   * - saves token to local storage
+   * - redirects user to the movies page upon success
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userDetails).subscribe((result) => {
       localStorage.setItem('username', result.user.username);

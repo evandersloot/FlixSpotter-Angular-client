@@ -18,14 +18,24 @@ export class NavigationBarComponent implements OnInit {
     public router: Router,
   ) { }
 
+  /**
+   * Gets user details on initialization
+   */
   ngOnInit(): void {
     this.getUserDetails()
   }
   
+  /**
+   * Gets user details to display username on the navigation bar
+   */
   public getUserDetails(): void {
     this.userDetails = localStorage.getItem('username');
   }
 
+  /**
+   * method will clear the token and username from local storage
+   * then navigates the user to the welcome page
+   */
   signOut(): void {
     localStorage.clear();
     this.router.navigate(['welcome']);

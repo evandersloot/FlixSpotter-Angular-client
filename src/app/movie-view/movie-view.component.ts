@@ -10,6 +10,9 @@ export class MovieViewComponent implements OnInit {
 
   constructor( 
     
+  /**
+  * Inject to retrieve movie details from movie object
+  */
   @Inject(MAT_DIALOG_DATA)
   public data: {
     title: string,
